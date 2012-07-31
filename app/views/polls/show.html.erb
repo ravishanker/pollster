@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+<%= @poll.inspect %>
+<p>
+  <b>Title:</b>
+  <%= @poll.title %>
+</p>
+
+<!-- <p>
+  <b>Body:</b>
+  <%= @poll.body %>
+</p> -->
+
+<p>
+	<b>Link</b>
+	<%= link_to edit_poll_url(@poll.edit_link) %>
+</p>
+
+
+
+<%= link_to 'Edit', edit_poll_path(@poll) %> |
+<%= link_to 'Back', polls_path %>

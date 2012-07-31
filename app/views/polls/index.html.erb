@@ -1,0 +1,31 @@
+<h1>Listing polls</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <!-- <th>Body</th> -->
+    <th>Edit Link</th>
+    <th>Poll Link</th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr><!-- 
+<%= @polls.inspect %> -->
+<% @polls.each do |poll| %>
+  <tr>
+    <td><%= poll.title %></td>
+   <!--  <td><%= poll.body %></td> -->
+    <td><%= link_to edit_poll_url(poll.edit_link), edit_poll_url(poll.edit_link) %></td>
+    <td><%= link_to poll_url(poll.poll_link), poll_url(poll.poll_link) %></td>
+    <td>&nbsp</td>
+    <td><%= link_to 'Show', poll %></td>
+    <td><%= link_to 'Edit', edit_poll_path(poll) %></td>
+    <td><%= link_to 'Destroy', poll, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Poll', new_poll_path %>

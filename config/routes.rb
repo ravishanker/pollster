@@ -1,4 +1,18 @@
 Pollster::Application.routes.draw do
+  resources :polls #, :except => [:show, :edit]
+
+  root :to => 'polls#index'
+
+  match 'polls/:poll_link' => 'polls#show', :as => 'poll', :via => :get
+  match 'polls/:edit_link/edit' => 'polls#edit', :as => 'edit_poll', :via => :get
+
+  #match "/polls/:poll_link" => redirect {|params| "/polls/#{params[:poll_link].pluralize}" }, :as => 'poll_link', :via => :get
+  #match "/polls/:edit_link/edit" => redirect {|params| "/polls/#{params[:edit_link].pluralize}/edit" }, :as => 'edit_poll_link', :via => :get
+
+  #match "/polls/:poll_link" => redirect("/polls/%{poll_link}"), :as => 'poll_link', :via => :get
+  #match "/polls/:edit_link/edit" => redirect("polls/%{edit_link}/edit"), :as => 'edit_poll_link', :via => :get
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
