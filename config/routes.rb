@@ -1,4 +1,6 @@
 Pollster::Application.routes.draw do
+  resources :questions
+
   resources :polls #, :except => [:show, :edit]
 
   root :to => 'polls#index'

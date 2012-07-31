@@ -32,6 +32,7 @@ class PollsController < ApplicationController
   # GET /polls/new.json
   def new
     @poll = Poll.new
+    question = @poll.questions.build
 
     respond_to do |format|
       format.html # new.html.erb
@@ -54,9 +55,10 @@ class PollsController < ApplicationController
   # POST /polls.json
   def create
     @poll = Poll.new(params[:poll])
+    @question = Question.new(params[:question])
 
     respond_to do |format|
-      if @poll.save
+      if @poll.save && @question.save
         format.html { redirect_to @poll, notice: 'Poll was successfully created.' }
         format.json { render json: @poll, status: :created, location: @poll }
       else

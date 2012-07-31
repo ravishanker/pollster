@@ -1,6 +1,8 @@
 class Poll < ActiveRecord::Base
   attr_accessible :body, :title, :edit_link, :poll_link
 
+  has_many :questions, :dependent => :destroy
+
   before_create :set_edit_link, :set_poll_link
   
   def set_edit_link

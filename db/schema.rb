@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120730215741) do
+ActiveRecord::Schema.define(:version => 20120731063027) do
 
   create_table "polls", :force => true do |t|
     t.string   "title"
@@ -24,5 +24,14 @@ ActiveRecord::Schema.define(:version => 20120730215741) do
 
   add_index "polls", ["edit_link"], :name => "index_polls_on_edit_link"
   add_index "polls", ["poll_link"], :name => "index_polls_on_poll_link"
+
+  create_table "questions", :force => true do |t|
+    t.string   "question"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "poll_id"
+  end
+
+  add_index "questions", ["poll_id"], :name => "index_questions_on_poll_id"
 
 end
